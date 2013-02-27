@@ -63,7 +63,7 @@ script:
   - export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][selenium2][wd_host]=$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com/wd/hub"
 
   # Setup sauce tunnel in the background and give it time to launch.
-  - java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY &> /dev/null &
+  - java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY > /dev/null 2>&1 &
   - sleep 45s
 
   # behat.yml includes behat.local.yml so it must exist
