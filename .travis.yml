@@ -3,6 +3,11 @@ language: php
 php:
   - 5.4
 
+env:
+  global:
+    - secure: "FZJA/WJSKeVfJPafI6Yco6+66Oa7ezt7WQ80ggPuW9psQttQhG6IiQ0WdNgT\nYe0oitrRN62UBcnY1W1H2R0hqT0G8chmBP076AZ0UJ/aUdl1ZTmDiSs/YWz6\nb3q3JryoMdP8MNJNPi6qVRkhGK8D1iapcN8aicoRKL1+xwTja5s="
+    - secure: "EIxZfB0V0kn2CZ+0Qc4guqE2LwXYFOZHDM0720wVwi8FOKBYT6xQP+hBodrQ\nzJqhLW+SiexomCv5fUgX0oyjbcoxKJj19SSb76cVy5RAzqdg/agMpMNTQpI9\nXjnBV6Tt9edBNOxP08QxGRJRIekd1amDKCq0fisdxfIWSGvHENc="
+
 mysql:
   database: drupal
   username: root
