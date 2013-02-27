@@ -58,8 +58,21 @@ before_script:
 
 script:
   - cd tests/behat
+
+  # Set env variable for behat params.
+  - export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][selenium2][wd_host]=$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com/wd/hub"
+
+  # Setup sauce tunnel in the background and give it time to launch.
+  - java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY > /dev/null 2>&1 &
+  - sleep 45s
+
   # behat.yml includes behat.local.yml so it must exist
   - touch behat.local.yml
+
   # Run behat tests
-  - ./bin/behat --no-paths
+  #- ./bin/behat --no-paths
+  - ./bin/behat -p Firefox-14 --no-paths
+
+  # Shut down the sauce tunnel
+  - kill $(ps aux | grep "Sauce-Connect" | grep -v 'grep' | awk '{print $2}')
 

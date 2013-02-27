@@ -22,5 +22,6 @@ default:
       drush:
         alias: self
 imports:
+  - config/sauce.yml
   - behat.local.yml
 

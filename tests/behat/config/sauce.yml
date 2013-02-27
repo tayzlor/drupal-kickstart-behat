@@ -1,0 +1,33 @@
+# sauce.yml
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      default_session: 'selenium2'
+
+IE-9:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        browser: iexplore
+        capabilities: { platform: Windows 2008, browser: iexplore, version: 9}
+
+Firefox-14:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        browser: firefox
+        capabilities: { platform: Mac 10.6, version: 14}
+
+Android:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        browser: android
+        capabilities: { platform: Linux, version: 4}
+
+iPad:
+  extensions:
+    Behat\MinkExtension\Extension:
+      selenium2:
+        browser: iPad
+        capabilities: { platform: Mac 10.8, version: 6}
