@@ -1,0 +1,60 @@
+language: php
+
+php:
+  - 5.4
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+install:
+
+  # Create MySQL Database
+  - mysql -e 'create database drupal;'
+  - sudo apt-get --quiet=2 install php5-cli php5-cgi php5-curl php5-gd php5-mysql > /dev/null
+
+  # Install Drush
+  - pear channel-discover pear.drush.org
+  - pear install drush/drush
+  - phpenv rehash
+
+  # Run composer
+  - cd ./tests/behat
+  - composer install
+  - cd ../../
+
+before_script:
+
+  # Install Kickstart Profile
+  - drush make --prepare-install build-commerce-kickstart.make kickstart --yes
+  - cd kickstart
+  - sudo chmod -R 777 sites/all/
+  - sudo chmod -R 777 sites/default/files/
+  - drush si commerce_kickstart --sites-subdir=default --db-url=mysql://root:@127.0.0.1/drupal --account-name=admin --account-pass=admin --site-mail=admin@example.com --site-name="Commerce Kickstart Profile" --yes
+  - drush cc all --yes
+  - cd ../
+
+  # Setup display for selenium
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 5s
+
+  # Run the drush built in webserver.
+  - sudo chmod u+x /home/travis/.phpenv/shims/drush
+  - sudo ln -s /home/travis/.phpenv/shims/drush /usr/bin/drush
+  - sudo drush --root=$PWD/kickstart runserver --server=builtin 80 &
+  - sleep 5s # give Web server some time to bind to sockets, etc
+
+  # Run selenium
+  - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
+  - java -jar selenium-server-standalone-2.25.0.jar -p 4444 &
+  - sleep 5s
+
+script:
+  - cd tests/behat
+  # behat.yml includes behat.local.yml so it must exist
+  - touch behat.local.yml
+  # Run behat tests
+  - ./bin/behat --no-paths
+
