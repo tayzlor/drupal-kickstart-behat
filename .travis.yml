@@ -48,7 +48,7 @@ before_script:
 
   # Run selenium
   - wget http://selenium.googlecode.com/files/selenium-server-standalone-2.25.0.jar
-  - java -jar selenium-server-standalone-2.25.0.jar -p 4444 &
+  - java -jar selenium-server-standalone-2.25.0.jar -p 4444 > /dev/null 2>&1 &
   - sleep 5s
 
 script:
