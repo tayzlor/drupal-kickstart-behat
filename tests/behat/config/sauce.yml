@@ -11,12 +11,12 @@ IE-9:
         browser: iexplore
         capabilities: { platform: Windows 2008, browser: iexplore, version: 9}
 
-Firefox-14:
+Firefox-19:
   extensions:
     Behat\MinkExtension\Extension:
       selenium2:
         browser: firefox
-        capabilities: { platform: Mac 10.6, version: 14}
+        capabilities: { platform: Linux, version: 19}
 
 Android:
   extensions:

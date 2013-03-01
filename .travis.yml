@@ -63,8 +63,8 @@ script:
   - export BEHAT_PARAMS="extensions[Behat\MinkExtension\Extension][selenium2][wd_host]=$SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com/wd/hub"
 
   # Setup sauce tunnel in the background and give it time to launch.
-  #- java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY > /dev/null 2>&1 &
-  - java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY --fast-fail-regexps "google.com,saucelabs.com,twitter.com, gstatic.com" 2&>1 >/dev/null
+  - java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY --fast-fail-regexps "google.com,saucelabs.com,twitter.com, gstatic.com" > /dev/null 2>&1 &
+  #- java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY --fast-fail-regexps "google.com,saucelabs.com,twitter.com, gstatic.com" 2&>1 /dev/null
   - sleep 45s
 
   # Run behat tests
