@@ -69,7 +69,7 @@ script:
 
   # Run behat tests
   #- ./bin/behat --no-paths
-  - ./bin/behat -p Firefox-14 --no-paths
+  - ./bin/behat -p Firefox-19 --no-paths
 
   # Shut down the sauce tunnel
   - kill $(ps aux | grep "Sauce-Connect" | grep -v 'grep' | awk '{print $2}')
