@@ -5,3 +5,6 @@ default:
       # For saucelabs.com integration replace the below with your sauce username and API key
       selenium2:
         wd_host: $SAUCE_USERNAME:$SAUCE_ACCESS_KEY@ondemand.saucelabs.com/wd/hub
+    # For JIRA integration
+    VIPSoft\JiraExtension\Extension:
+      host: http://jira.yourhost.com/

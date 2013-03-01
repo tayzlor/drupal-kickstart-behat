@@ -202,10 +202,10 @@ class FeatureContext extends DrupalContext {
     $element = $this->getSession()->getPage();
     // Go to the user page.
     $this->getSession()->visit($this->locatePath('/user'));
-    if ($find = $element->find('css', '#page-title')) {
+    if ($find = $element->find('css', 'h1')) {
       $page_title = $find->getText();
       if ($page_title) {
-        return str_replace('Hello, ', '', $page_title);
+        return str_replace('hello, ', '', strtolower($page_title));
       }
     }
     return FALSE;

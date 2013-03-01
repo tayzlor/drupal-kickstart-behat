@@ -67,9 +67,6 @@ script:
   - java -jar vendor/sauce/connect/lib/Sauce-Connect.jar -P 4445 $SAUCE_USERNAME $SAUCE_ACCESS_KEY --fast-fail-regexps "google.com,saucelabs.com,twitter.com, gstatic.com" 2&>1 >/dev/null
   - sleep 45s
 
-  # behat.yml includes behat.local.yml so it must exist
-  - touch behat.local.yml
-
   # Run behat tests
   #- ./bin/behat --no-paths
   - ./bin/behat -p Firefox-14 --no-paths
