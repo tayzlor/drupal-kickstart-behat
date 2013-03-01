@@ -6,14 +6,12 @@ Feature: Add drinking item to cart
 
   Scenario: View the drinking options text and links on the page
     Given I am on the homepage
-    When I click "To drink with"
+    When I follow "To drink with"
     Then I should see the heading "Coffee Mugs"
     And I should see the link "Drupal Commerce to Wake You Up"
 
   Scenario: View coffee mug product information
-    Given I am on the homepage
-    When I click "To drink with"
-    And I click "Drupal Commerce to Wake You Up"
+    When I go to "/drinks/drupal-commerce-wake-you"
     Then I should see the following <texts>
       | texts                           |
       | Drupal Commerce to Wake You Up  |
@@ -23,8 +21,6 @@ Feature: Add drinking item to cart
       | SKU: MG1-BLU-OS                 |
 
   Scenario: Add coffee mug to cart
-    Given I am on the homepage
-    When I click "To drink with"
-    And I click "Drupal Commerce to Wake You Up"
+    When I go to "/drinks/drupal-commerce-wake-you"
     And I press "Add to cart"
-    Then I should see the text "Item successfully added to your cart"
+    Then I should see "ITEM SUCCESSFULLY ADDED TO YOUR CART"
