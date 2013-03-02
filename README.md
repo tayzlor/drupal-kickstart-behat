@@ -1,7 +1,11 @@
 drupal-kickstart-behat
 ======================
 
-Sandbox for playing around with Drupal Commerce Kickstart and Behat
+
+A sandbox proof of concept for a session at Drupalcamp London (http://2013.drupalcamplondon.co.uk/session/zip-bdd-do-dah-zip-bdd-ay)
+Uses the Drupal 7 Commerce Kickstart profile (http://drupal.org/project/commerce_kickstart),
+with Behat/Mink testing using Travis CI (https://travis-ci.org) and Saucelabs (https://saucelabs.com)
+
 
 [![Build Status](https://travis-ci.org/tayzlor/drupal-kickstart-behat.png?branch=master)](https://travis-ci.org/tayzlor/drupal-kickstart-behat)
 
@@ -32,5 +36,19 @@ Set `base_url` to your local host
     cd /tests/behat
     ./bin/behat
 
-Create `behat.local.yml` from the example file and set your drush alias for the site.
-If using Saucelabs then set `wd_host` to use your sauce username and API key.
+Edit `behat.local.yml` and set your drush alias and base_url for the site you are testing.
+
+If you are using Saucelabs then set
+
+    Behat\MinkExtension\Extension:
+      selenium2:
+          wd_host: SAUCE_USER:API_KEY@ondemand.saucelabs.com/wd/hub
+
+to contain your sauce username and API key.
+
+If you are using the JIRA connector then set
+
+    VIPSoft\JiraExtension\Extension:
+      host: http://YOURJIRAHOST.com/
+
+to contain the path to your JIRA instance.
