@@ -33,11 +33,7 @@ with Behat/Mink testing using Travis CI (https://travis-ci.org) and Saucelabs (h
 Modify `/tests/behat/behat.yml`
 Set `base_url` to your local host
 
-    # Run tests
-    cd /tests/behat
-    ./bin/behat
-
-Edit `behat.local.yml` and set your drush alias and base_url for the site you are testing.
+Edit `behat.local.yml` and set your drush alias for the site you are testing.
 
 If you are using Saucelabs then set
 
@@ -53,3 +49,9 @@ If you are using the JIRA connector then set
       host: http://YOURJIRAHOST.com/
 
 to contain the path to your JIRA instance.
+
+To run tests
+
+    # Run tests
+    cd /tests/behat
+    ./bin/behat
