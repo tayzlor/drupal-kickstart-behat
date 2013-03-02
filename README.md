@@ -2,7 +2,8 @@ drupal-kickstart-behat
 ======================
 
 
-A sandbox proof of concept for a session at Drupalcamp London (http://2013.drupalcamplondon.co.uk/session/zip-bdd-do-dah-zip-bdd-ay)
+A sandbox proof of concept for a session at Drupalcamp London (http://2013.drupalcamplondon.co.uk/session/zip-bdd-do-dah-zip-bdd-ay).
+
 Uses the Drupal 7 Commerce Kickstart profile (http://drupal.org/project/commerce_kickstart),
 with Behat/Mink testing using Travis CI (https://travis-ci.org) and Saucelabs (https://saucelabs.com)
 
